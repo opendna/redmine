@@ -79,6 +79,10 @@ else
   warn("Please configure your config/database.yml first")
 end
 
+gem "mysql", "~> 2.8.1", :platforms => [:mri, :mingw]
+gem "activerecord-jdbcmysql-adapter", :platforms => :jruby
+
+
 group :development do
   gem "rdoc", ">= 2.4.2"
   gem "yard"
