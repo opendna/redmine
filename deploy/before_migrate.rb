@@ -6,7 +6,7 @@ end
 if !File.exist?("#{shared_path}/config/secrettoken.rb") then
   run "bundle install"
   run "#{rakecmd} generatesecrettoken"
-  run "mv #{releasepath}/config/initializers/secrettoken.rb #{shared_path}/config/secrettoken.rb"
+  run "mv #{release_path}/config/initializers/secrettoken.rb #{shared_path}/config/secrettoken.rb"
 end
 
-run "ln -s #{shared_path}/config/secrettoken.rb #{releasepath}/config/initializers/secrettoken.rb"
+run "ln -s #{shared_path}/config/secrettoken.rb #{release_path}/config/initializers/secrettoken.rb"
