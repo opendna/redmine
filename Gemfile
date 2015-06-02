@@ -9,6 +9,8 @@ gem "builder", "3.0.0"
 gem "request_store"
 gem "mime-types"
 
+gem 'ey_config'
+
 # Optional gem for LDAP authentication
 group :ldap do
   gem "net-ldap", "~> 0.3.1"

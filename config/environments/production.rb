@@ -22,11 +22,20 @@ RedmineApp::Application.configure do
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host                  = "http://assets.example.com"
 
-  # Disable delivery errors if you bad email addresses should just be ignored
-  config.action_mailer.raise_delivery_errors = false
-
   # No email in production log
   config.action_mailer.logger = nil
 
   config.active_support.deprecation = :log
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+       :authentication => :plain,
+       :address => "smtp.sendgrid.net",
+       :port => 587,
+       :domain => "yourdomain.com",
+       :user_name => EY::Config.get(:sendgrid, 'SENDGRID_USERNAME'),
+       :password => EY::Config.get(:sendgrid, 'SENDGRID_PASSWORD')
+  }
 end
